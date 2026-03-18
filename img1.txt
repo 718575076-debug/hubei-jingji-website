@@ -1,0 +1,1 @@
+[Convert]::ToBase64String([System.IO.File]::ReadAllBytes('C:\Users\y7185\Desktop\马尔产品图片\圆度仪\20211018101111_461898884.jpg'))
