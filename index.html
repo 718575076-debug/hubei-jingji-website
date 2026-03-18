@@ -785,5 +785,32 @@ alert('询价已提交！我们会尽快联系您。');
 console.log('姓名:'+姓名+', 电话:'+电话+', 邮箱:'+邮箱+', 公司:'+公司+', 需求:'+需求);
 }
 </script>
+
+<!-- 产品详情弹窗 -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-body">
+            <img id="modalImage" src="" alt="" class="modal-product-img">
+            <div class="modal-product-info">
+                <h2 id="modalTitle"></h2>
+                <div class="modal-section">
+                    <h3>产品简介</h3>
+                    <p id="modalDesc"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>技术参数</h3>
+                    <div id="modalSpecs"></div>
+                </div>
+                <div class="modal-section">
+                    <h3>主要功能</h3>
+                    <ul id="modalFeatures"></ul>
+                </div>
+                <a href="#contact" class="btn btn-primary modal-btn" onclick="closeModal()">立即咨询</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

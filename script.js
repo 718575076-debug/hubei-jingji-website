@@ -393,8 +393,240 @@ window.addEventListener('load', function() {
     // 添加页面加载动画
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
-    
+
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
+});
+
+// 产品详情数据
+const productData = {
+    '圆柱度仪 MMQ 400': {
+        image: 'images/roundness-1-MMQ400-2.jpg',
+        description: 'MMQ 400是一款专业的大型工件圆柱度测量仪，采用高精度传感器和先进的数据处理系统，适用于大型回转体工件的圆柱度、圆度、同轴度等形位误差测量。',
+        specs: [
+            { label: '测量范围', value: '直径400mm，高度500mm' },
+            { label: '圆柱度误差', value: '≤0.5μm' },
+            { label: '圆度误差', value: '≤0.3μm' },
+            { label: '分辨率', value: '0.1μm' },
+            { label: '主轴转速', value: '2-10r/min' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '高精度测量，满足计量室级别要求',
+            '大测量范围，适合大型工件',
+            '专业分析软件，支持多种形位误差分析',
+            '自动对中功能，简化操作流程',
+            '数据导出功能，便于质量追溯'
+        ]
+    },
+    '圆柱度仪 MMQ 200': {
+        image: 'images/roundness-2-MMQ200.jpg',
+        description: 'MMQ 200是一款紧凑型高精度圆柱度仪，适用于中小型工件的精密测量。配备先进的分析软件，提供全面的测量解决方案。',
+        specs: [
+            { label: '测量范围', value: '直径200mm，高度350mm' },
+            { label: '圆柱度误差', value: '≤0.3μm' },
+            { label: '圆度误差', value: '≤0.2μm' },
+            { label: '分辨率', value: '0.1μm' },
+            { label: '主轴转速', value: '2-15r/min' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '紧凑设计，节省空间',
+            '高精度测量，适合实验室使用',
+            '友好软件界面，易于操作',
+            '多种测量模式可选',
+            '支持第三方校准'
+        ]
+    },
+    '轮廓仪 MarSurf LD 140': {
+        image: 'images/contour-2-LD140.jpg',
+        description: 'MarSurf LD 140是一款高精度粗糙度轮廓综合测量仪，集成了粗糙度和轮廓测量功能，一机多用，提高测量效率。',
+        specs: [
+            { label: '轮廓测量范围', value: 'Z轴80mm，X轴140mm' },
+            { label: '粗糙度测量范围', value: '350μm' },
+            { label: '分辨率', value: '0.8nm' },
+            { label: '测量力', value: '0.5-3mN' },
+            { label: '导轨精度', value: '≤0.3μm/100mm' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '粗糙度轮廓一体化测量',
+            '高精度导轨，确保测量稳定性',
+            '多种分析算法，符合ISO标准',
+            '自动归零和校准功能',
+            '支持多种探针规格'
+        ]
+    },
+    '轮廓仪 MarSurf SD 140': {
+        image: 'images/contour-1-SD140.jpg',
+        description: 'MarSurf SD 140是马尔公司推出的高精度表面轮廓测量仪，采用扫描式测量技术，适用于复杂形状工件的精密测量。',
+        specs: [
+            { label: '测量范围', value: 'Z轴80mm，X轴140mm' },
+            { label: '轮廓精度', value: '≤0.8μm/100mm' },
+            { label: '分辨率', value: '1nm' },
+            { label: '扫描速度', value: '0.1-2mm/s' },
+            { label: '直线度', value: '≤0.3μm/100mm' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '扫描式测量，适合复杂轮廓',
+            '高分辨率，测量精度高',
+            '多种扫描模式可选',
+            '强大的分析软件',
+            '支持GD&T形位公差分析'
+        ]
+    },
+    '粗糙度轮廓仪一体机 LD 140': {
+        image: 'images/contour-2-LD140.jpg',
+        description: 'LD 140粗糙度轮廓仪一体机是德国马尔公司的明星产品，一台设备同时满足粗糙度和轮廓测量需求，是精密测量的理想选择。',
+        specs: [
+            { label: '测量类型', value: '粗糙度+轮廓' },
+            { label: 'Z轴行程', value: '80mm' },
+            { label: 'X轴行程', value: '140mm' },
+            { label: '粗糙度Ra', value: '0.01-100μm' },
+            { label: '分辨率', value: '0.8nm' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '一机两用，节省成本',
+            '高性价比，适合中小企业',
+            '操作简便，上手快',
+            '符合ISO/ASME/DIN等国际标准',
+            '完善的售后服务'
+        ]
+    },
+    '粗糙度轮廓仪一体机 SD 140': {
+        image: 'images/contour-1-SD140.jpg',
+        description: 'SD 140粗糙度轮廓仪一体机采用先进的传感器技术和智能分析算法，为用户提供高精度的表面质量检测方案。',
+        specs: [
+            { label: '测量类型', value: '粗糙度+轮廓' },
+            { label: 'Z轴行程', value: '80mm' },
+            { label: 'X轴行程', value: '140mm' },
+            { label: '轮廓精度', value: '≤0.8μm' },
+            { label: '测量力范围', value: '0.5-3mN' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '高精度传感器',
+            '智能评估算法',
+            '丰富的报告模板',
+            '支持定制化测量流程',
+            '数据可追溯'
+        ]
+    },
+    '粗糙度仪 XR1': {
+        image: 'images/粗糙度仪-XR1.jpg',
+        description: 'XR1是一款便携式高精度粗糙度测量仪，采用现代传感技术，适用于车间现场和实验室的各种表面粗糙度测量需求。',
+        specs: [
+            { label: '测量范围', value: 'Ra: 0.01-100μm' },
+            { label: '测量参数', value: 'Ra, Rz, Rq, Rp, Rmax等' },
+            { label: '分辨率', value: '0.01μm' },
+            { label: '触针半径', value: '2μm/5μm可选' },
+            { label: '测量力', value: '0.5mN' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '便携式设计，适合现场使用',
+            '彩色显示屏，数据清晰',
+            '内置多种评估标准',
+            '支持蓝牙数据传输',
+            '超长续航能力'
+        ]
+    },
+    '测高仪 817 CL': {
+        image: 'images/测高仪-817 CL.jpg',
+        description: '817 CL是马尔公司生产的高精度电子测高仪，用于精确测量工件的高度、厚度、槽深等尺寸参数，广泛应用于精密加工和检测领域。',
+        specs: [
+            { label: '测量范围', value: '0-1000mm' },
+            { label: '分辨率', value: '1μm' },
+            { label: '示值误差', value: '±2μm' },
+            { label: '测量力', value: '1.0N±0.2N' },
+            { label: '显示方式', value: 'LCD数字显示' },
+            { label: '品牌', value: '德国马尔Mahr' }
+        ],
+        features: [
+            '高精度测量，满足计量要求',
+            '数显读数，避免人为误差',
+            '多种测量模式',
+            '数据输出接口',
+            '可靠性和稳定性高'
+        ]
+    }
+};
+
+// 打开产品详情弹窗
+function openProductModal(productName) {
+    const product = productData[productName];
+    if (!product) {
+        alert('产品详情正在完善中，敬请期待！');
+        return;
+    }
+
+    document.getElementById('modalImage').src = product.image;
+    document.getElementById('modalTitle').textContent = productName;
+    document.getElementById('modalDesc').textContent = product.description;
+
+    // 生成技术参数HTML
+    let specsHtml = '';
+    product.specs.forEach(spec => {
+        specsHtml += `<div class="spec-item"><span>${spec.label}</span><span>${spec.value}</span></div>`;
+    });
+    document.getElementById('modalSpecs').innerHTML = specsHtml;
+
+    // 生成主要功能HTML
+    let featuresHtml = '';
+    product.features.forEach(feature => {
+        featuresHtml += `<li>${feature}</li>`;
+    });
+    document.getElementById('modalFeatures').innerHTML = featuresHtml;
+
+    document.getElementById('productModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// 关闭弹窗
+function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 点击弹窗外部关闭
+window.addEventListener('click', function(e) {
+    const modal = document.getElementById('productModal');
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// ESC键关闭弹窗
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// 为产品图片添加点击事件
+document.addEventListener('DOMContentLoaded', function() {
+    const productImages = document.querySelectorAll('.product-image');
+    productImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function() {
+            const card = this.closest('.product-card');
+            const title = card.querySelector('h3').textContent;
+            openProductModal(title);
+        });
+    });
+
+    // 为产品卡片添加点击事件（点击整个卡片也可以打开）
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+            // 避免点击链接时触发
+            if (e.target.classList.contains('product-link')) return;
+            const title = this.querySelector('h3').textContent;
+            openProductModal(title);
+        });
+    });
 });
